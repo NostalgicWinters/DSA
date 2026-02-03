@@ -42,22 +42,16 @@ class static_array:
         print(real_arr)
 
 
+
 def twoSum( nums: List[int], target: int) -> List[int]:
-    res = []
-    a = None
-    for n in range(len(nums)-1):
-        if(((target - nums[n]) in nums)):
-            if(nums.index(target - nums[n])!=n):
-                a = nums.index(target - nums[n])
-                res.append(n)
-                res.append(a)
-                return res
-            elif(nums.index(target - nums[n])==n):
-                if(nums.count(target - nums[n])>1):
-                    a = nums.index(target-nums[n],n+1)
-                    res.append(n)
-                    res.append(a)
-                    return res
+    seen = {}  # value -> index
+
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+
 
 a = twoSum([3,3],6)
 print(a)
