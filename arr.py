@@ -1,3 +1,5 @@
+from typing import List
+
 class static_array:
     def __init__(self,size):
         self._size = size
@@ -40,7 +42,22 @@ class static_array:
         print(real_arr)
 
 
-a = static_array(4)
-a.update([1,2,3])
-a.delete(3)
-a.display()
+def twoSum( nums: List[int], target: int) -> List[int]:
+    res = []
+    a = None
+    for n in range(len(nums)-1):
+        if(((target - nums[n]) in nums)):
+            if(nums.index(target - nums[n])!=n):
+                a = nums.index(target - nums[n])
+                res.append(n)
+                res.append(a)
+                return res
+            elif(nums.index(target - nums[n])==n):
+                if(nums.count(target - nums[n])>1):
+                    a = nums.index(target-nums[n],n+1)
+                    res.append(n)
+                    res.append(a)
+                    return res
+
+a = twoSum([3,3],6)
+print(a)
