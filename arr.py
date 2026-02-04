@@ -1,4 +1,5 @@
 from typing import List
+import math
 
 class static_array:
     def __init__(self,size):
@@ -42,7 +43,7 @@ class static_array:
         print(real_arr)
 
 
-
+#Two Sum optimised
 def twoSum( nums: List[int], target: int) -> List[int]:
     seen = {}
 
@@ -80,7 +81,32 @@ def longestCommonPrefixOpti(strs: List[str]) -> str:
             smallest = smallest[:len(smallest)-1]
     return smallest
     
+#Container with most water brute force
+def maxArea(height: List[int]) -> int:
+    pro = 0
+    for n in range(len(height)-1):
+        for k in range(1,len(height)):
+            smaller = min(height[n],height[k])
+            if(smaller*(abs(k-n))>pro):
+                pro = smaller*(abs(k-n))
+    return pro
 
-b = 'dev'
-a = longestCommonPrefixOpti(["flower","flow","flight"])
+#Container with most water optimized
+def maxAreaOpti(height: List[int]) -> int:
+    l, r = 0, len(height) - 1
+    max_area = 0
+
+    while l < r:
+        h = min(height[l], height[r])
+        max_area = max(max_area, h * (r - l))
+
+        if height[l] < height[r]:
+            l += 1
+        else:
+            r -= 1
+
+    return max_area
+
+
+a = maxAreaOpti([1,8,6,2,5,4,8,3,7])
 print(a)
