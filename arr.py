@@ -52,6 +52,7 @@ def twoSum( nums: List[int], target: int) -> List[int]:
             return [seen[complement], i]
         seen[num] = i
 
+# Longest Common Prefix brute Force
 def longestCommonPrefix(strs: List[str]) -> str:
     if(len(strs)==1):
         return strs[0]
@@ -69,6 +70,17 @@ def longestCommonPrefix(strs: List[str]) -> str:
         firststr = res
     return res
 
+#Longest common prefix optimised
+def longestCommonPrefixOpti(strs: List[str]) -> str:
+    smallest = min(strs, key=len)
+    for n in strs:
+        if len(smallest) == 0:
+            return ""
+        while not n.startswith(smallest):
+            smallest = smallest[:len(smallest)-1]
+    return smallest
+    
 
-a = longestCommonPrefix(["flower","flow","flight"])
+b = 'dev'
+a = longestCommonPrefixOpti(["flower","flow","flight"])
 print(a)
