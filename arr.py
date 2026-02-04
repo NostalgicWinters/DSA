@@ -44,7 +44,7 @@ class static_array:
 
 
 def twoSum( nums: List[int], target: int) -> List[int]:
-    seen = {}  # value -> index
+    seen = {}
 
     for i, num in enumerate(nums):
         complement = target - num
@@ -52,6 +52,23 @@ def twoSum( nums: List[int], target: int) -> List[int]:
             return [seen[complement], i]
         seen[num] = i
 
+def longestCommonPrefix(strs: List[str]) -> str:
+    if(len(strs)==1):
+        return strs[0]
+    if(len(strs)==0):
+        return ""
+    firststr = strs[0]
+    for n in range(1,len(strs)):
+        res = ''
+        smaller = firststr if len(firststr)<= len(strs[n]) else strs[n]
+        for k in range(len(smaller)):
+            if(firststr[k] == strs[n][k]):
+                res += firststr[k]
+            else:
+                break
+        firststr = res
+    return res
 
-a = twoSum([3,3],6)
+
+a = longestCommonPrefix(["flower","flow","flight"])
 print(a)
