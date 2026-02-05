@@ -120,7 +120,8 @@ def threeSum(nums):
         l = n+1
         r = len(nums) - 1
         while(l<r):
-            if(nums[n]+nums[l]+nums[r]==0):
+            s = nums[n] + nums[l] + nums[r]
+            if(s==0):
                 res.append([nums[n],nums[l],nums[r]])
                 r-=1
                 l+=1
@@ -128,13 +129,34 @@ def threeSum(nums):
                     l += 1
                 while l < r and nums[r] == nums[r + 1]:
                     r -= 1
-            elif(nums[n]+nums[l]+nums[r]>0):
+            elif(s>0):
                 r-=1
             else:
                 l+=1
 
     return res
 
+from typing import List
 
-a = threeSum([-1,0,1,2,-1,-4])
-print(a)
+def summaryRanges(self, nums: List[int]) -> List[str]:
+        if not nums:
+            return []
+
+        res = []
+        start = nums[0]
+
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i - 1] + 1:
+                if start == nums[i - 1]:
+                    res.append(str(start))
+                else:
+                    res.append(f"{start}->{nums[i - 1]}")
+                start = nums[i]
+
+        if start == nums[-1]:
+            res.append(str(start))
+        else:
+            res.append(f"{start}->{nums[-1]}")
+
+        return res
+
