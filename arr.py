@@ -107,6 +107,31 @@ def maxAreaOpti(height: List[int]) -> int:
 
     return max_area
 
+def threeSum(nums):
+    res = []
+    nums = sorted(nums)
+    
+    for n in range(len(nums)-2):
+        if n > 0 and nums[n] == nums[n - 1]:
+            continue
+        l = n+1
+        r = len(nums) - 1
+        while(l<r):
+            if(nums[n]+nums[l]+nums[r]==0):
+                res.append([nums[n],nums[l],nums[r]])
+                r-=1
+                l+=1
+                while l < r and nums[l] == nums[l - 1]:
+                    l += 1
+                while l < r and nums[r] == nums[r + 1]:
+                    r -= 1
+            elif(nums[n]+nums[l]+nums[r]>0):
+                r-=1
+            else:
+                l+=1
 
-a = maxAreaOpti([1,8,6,2,5,4,8,3,7])
+    return res
+
+
+a = threeSum([-1,0,1,2,-1,-4])
 print(a)
