@@ -136,8 +136,6 @@ def threeSum(nums):
 
     return res
 
-from typing import List
-
 def summaryRanges(self, nums: List[int]) -> List[str]:
         if not nums:
             return []
@@ -159,4 +157,7 @@ def summaryRanges(self, nums: List[int]) -> List[str]:
             res.append(f"{start}->{nums[-1]}")
 
         return res
-
+    
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+grid = matrix[0:2]
+print(grid)
