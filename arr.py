@@ -157,7 +157,37 @@ def summaryRanges(self, nums: List[int]) -> List[str]:
             res.append(f"{start}->{nums[-1]}")
 
         return res
+
+#Suduko checker
+def isValidSudoku(self, board: List[List[str]]) -> bool:
+
+    for row in board:
+        nums = [n for n in row if n != "."]
+        if len(nums) != len(set(nums)):
+            return False
+
+        # Check columns
+    for col in zip(*board):
+        nums = [n for n in col if n != "."]
+        if len(nums) != len(set(nums)):
+            return False
+
+    for box_row in range(0, 9, 3):
+        for box_col in range(0, 9, 3):
+            seen = set()
+            for i in range(3):
+                for j in range(3):
+                    val = board[box_row + i][box_col + j]
+                    if val != ".":
+                        if val in seen:
+                            return False
+                        seen.add(val)
+
+    return True
+
     
 matrix = [[1,2,3],[4,5,6],[7,8,9]]
 grid = matrix[0:2]
+b = matrix[0][0]
+c = "2"
 print(grid)
