@@ -185,6 +185,20 @@ def isValidSudoku(self, board: List[List[str]]) -> bool:
 
     return True
 
+
+#Best Time to buy or sell a stock
+def maxProfit(self, prices: List[int]) -> int:
+    l,r = 0,1
+    diff = 0
+    while r < len(prices):
+        if prices[r]>prices[l]:
+            profit = prices[r]-prices[l]
+            diff = max(profit,diff)
+        else:
+            l=r
+        r+=1
+    return diff
+
     
 matrix = [[1,2,3],[4,5,6],[7,8,9]]
 grid = matrix[0:2]
