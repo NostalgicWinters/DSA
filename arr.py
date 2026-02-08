@@ -199,9 +199,8 @@ def maxProfit(self, prices: List[int]) -> int:
         r+=1
     return diff
 
-    
-matrix = [[1,2,3],[4,5,6],[7,8,9]]
-grid = matrix[0:2]
-b = matrix[0][0]
-c = "2"
-print(grid)
+dic = {'a':2,'b':1}
+
+hash = {'a':1,'b':2}
+print(1 in hash)
+print(sorted(dic.items(), key= lambda item: item[0]))

@@ -33,3 +33,17 @@ class Solution:
                 res.append(n)
                 res.append(hash[target-nums[n]])
                 return res
+            
+    #Top K frequency
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        hash = {}
+        lst = []
+        for n in range(len(nums)):
+            if(nums[n]) in hash:
+                hash[nums[n]] +=1
+            else:
+                hash[nums[n]] = 1
+        last = sorted(hash.items(), key=lambda item: item[1], reverse=True)
+        for i in range(k):
+            lst.append(last[i][0])
+        return lst        
