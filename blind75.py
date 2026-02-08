@@ -47,3 +47,18 @@ class Solution:
         for i in range(k):
             lst.append(last[i][0])
         return lst        
+    
+    #Group anagrams
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        res = []
+        for n in range(len(strs)):
+            temp = []
+            for k in range(len(strs)):
+                if(n==k):
+                    continue
+                if(sorted(strs[n])==sorted(strs[k])):
+                    temp.append(strs[k])
+            temp.append(strs[n])
+            if(sorted(temp) not in res):
+                res.append(sorted(temp))
+        return res
