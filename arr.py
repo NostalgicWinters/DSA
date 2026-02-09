@@ -199,6 +199,21 @@ def maxProfit(self, prices: List[int]) -> int:
         r+=1
     return diff
 
+#Group anagrams
+def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    res = []
+    for n in range(len(strs)):
+        temp = []
+        for k in range(len(strs)):
+            if(n==k):
+                continue
+            if(sorted(strs[n])==sorted(strs[k])):
+                temp.append(strs[k])
+        temp.append(strs[n])
+        if(sorted(temp) not in res):
+            res.append(sorted(temp))
+    return res
+
 dic = {'a':2,'b':1}
 
 hash = {'a':1,'b':2}
