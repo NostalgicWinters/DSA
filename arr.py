@@ -232,5 +232,5 @@ def combinationSum( candidates: List[int], target: int) -> List[List[int]]:
     dfs(0, target, [])
     return res
 
-a = combinationSum([2,3,6,7],7)
+a = combinationSum([2,3,5],8)
 print(a)
