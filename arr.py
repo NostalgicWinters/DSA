@@ -136,7 +136,7 @@ def threeSum(nums):
 
     return res
 
-def summaryRanges(self, nums: List[int]) -> List[str]:
+def summaryRanges( nums: List[int]) -> List[str]:
         if not nums:
             return []
 
@@ -159,7 +159,7 @@ def summaryRanges(self, nums: List[int]) -> List[str]:
         return res
 
 #Suduko checker
-def isValidSudoku(self, board: List[List[str]]) -> bool:
+def isValidSudoku( board: List[List[str]]) -> bool:
 
     for row in board:
         nums = [n for n in row if n != "."]
@@ -187,7 +187,7 @@ def isValidSudoku(self, board: List[List[str]]) -> bool:
 
 
 #Best Time to buy or sell a stock
-def maxProfit(self, prices: List[int]) -> int:
+def maxProfit( prices: List[int]) -> int:
     l,r = 0,1
     diff = 0
     while r < len(prices):
@@ -200,7 +200,7 @@ def maxProfit(self, prices: List[int]) -> int:
     return diff
 
 #Group anagrams
-def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+def groupAnagrams( strs: List[str]) -> List[List[str]]:
     res = []
     for n in range(len(strs)):
         temp = []
@@ -214,8 +214,23 @@ def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
             res.append(sorted(temp))
     return res
 
-dic = {'a':2,'b':1}
+def combinationSum( candidates: List[int], target: int) -> List[List[int]]:
+    res = []
 
-hash = {'a':1,'b':2}
-print(1 in hash)
-print(sorted(dic.items(), key= lambda item: item[0]))
+    def dfs(start: int, target: int, path: List[int]):
+        if target == 0:
+            res.append(path.copy())
+            return
+        if target < 0:
+            return
+
+        for i in range(start, len(candidates)):
+            path.append(candidates[i])
+            dfs(i, target - candidates[i], path)
+            path.pop()
+
+    dfs(0, target, [])
+    return res
+
+a = combinationSum([2,3,6,7],7)
+print(a)
