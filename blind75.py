@@ -62,3 +62,29 @@ class Solution:
             if(sorted(temp) not in res):
                 res.append(sorted(temp))
         return res
+
+    #Valid Suduko
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+
+        for row in board:
+            nums = [n for n in row if n != "."]
+            if len(nums) != len(set(nums)):
+                return False
+
+        for col in zip(*board):
+            nums = [n for n in col if n != "."]
+            if len(nums) != len(set(nums)):
+                return False
+
+        for box_row in range(0, 9, 3):
+            for box_col in range(0, 9, 3):
+                seen = set()
+                for i in range(3):
+                    for j in range(3):
+                        val = board[box_row + i][box_col + j]
+                        if val != ".":
+                            if val in seen:
+                                return False
+                            seen.add(val)
+
+        return True
